@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PortfolioController } from './portfolio.controller';
 import { PortfolioService } from './portfolio.service';
 import { PortfolioHolding, PortfolioHoldingSchema } from './portfolio.schema';
+import { LiveFinanceService } from './live-finance.service';
 
 @Module({
   imports: [
@@ -11,7 +12,7 @@ import { PortfolioHolding, PortfolioHoldingSchema } from './portfolio.schema';
     ]),
   ],
   controllers: [PortfolioController],
-  providers: [PortfolioService],
+  providers: [PortfolioService, LiveFinanceService],
   exports: [PortfolioService],
 })
 export class PortfolioModule {}
