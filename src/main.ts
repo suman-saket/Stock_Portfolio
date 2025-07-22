@@ -14,6 +14,8 @@ async function bootstrap() {
       'http://[::1]:8000', // IPv6 localhost (no path)
       'http://localhost:3001',
       'http://localhost:8080',
+      'https://stock-portfolio-be.vercel.app',
+      'https://stock-portfolio-fe.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: [
@@ -45,7 +47,7 @@ async function bootstrap() {
     .setDescription('The Stock Portfolio API documentation')
     .setVersion('1.0')
     .addServer('http://localhost:8000', 'Local development server')
-    .addServer('https://stock-portfolio.dev.in', 'Development server')
+    .addServer('https://stock-portfolio-be.vercel.app', 'Production server')
     .addBearerAuth(
       {
         type: 'http',
@@ -71,7 +73,7 @@ async function bootstrap() {
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
   });
 
-  await app.listen(8000);
+  await app.listen(process.env.PORT || 8000);
   console.log(`Application is running on: ${await app.getUrl()}`);
   console.log(
     `Swagger documentation is available at: ${await app.getUrl()}/api/swagger/docs`,
