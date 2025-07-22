@@ -22,7 +22,7 @@ export class PortfolioService {
         try {
           liveData = await this.liveFinanceService.getLiveData(tickerObj);
         } catch (e) {
-          // Handle error, fallback to nulls
+          console.error(`Error fetching live data for ${holding.stockName}:`, e);
         }
         return {
           ...holding.toObject(),
