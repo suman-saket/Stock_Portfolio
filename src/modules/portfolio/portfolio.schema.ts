@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 
-@Schema({ collection: 'portfolio', timestamps: true })
+@Schema({ collection: 'portfolio', timestamps: true,versionKey: false })
 export class PortfolioHolding extends Document {
    @Prop({ type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' })
   userId: mongoose.Schema.Types.ObjectId;

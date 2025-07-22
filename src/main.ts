@@ -11,7 +11,9 @@ async function bootstrap() {
     origin: [
       'http://localhost:8000',
       'http://127.0.0.1:8000',
-      'https://stock-portfolio.dev.in',
+      'http://[::1]:8000', // IPv6 localhost (no path)
+      'http://localhost:3001',
+      'http://localhost:8080',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: [
