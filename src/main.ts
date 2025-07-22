@@ -9,12 +9,9 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'http://localhost:3000',
-      'http://127.0.0.1:3000',
-      'http://[::1]:3000', // IPv6 localhost (no path)
-      'http://localhost:3001',
-      'http://localhost:8080',
-      'https://kv-web-api.devbh.in',
+      'http://localhost:8000',
+      'http://127.0.0.1:8000',
+      'https://stock-portfolio.dev.in',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: [
@@ -42,12 +39,11 @@ async function bootstrap() {
 
   // Swagger configuration
   const config = new DocumentBuilder()
-    .setTitle('KVPlus API')
-    .setDescription('The KVPlus API documentation')
+    .setTitle('Stock Portfolio API')
+    .setDescription('The Stock Portfolio API documentation')
     .setVersion('1.0')
-    // .setLicense('MIT', 'https://opensource.org/licenses/MIT')
-    .addServer('http://localhost:3000', 'Local development server')
-    .addServer('https://kv-web-api.devbh.in', 'Development server')
+    .addServer('http://localhost:8000', 'Local development server')
+    .addServer('https://stock-portfolio.dev.in', 'Development server')
     .addBearerAuth(
       {
         type: 'http',
@@ -68,12 +64,12 @@ async function bootstrap() {
       tagsSorter: 'alpha',
       operationsSorter: 'alpha',
     },
-    customSiteTitle: 'KVPlus API Documentation',
+    customSiteTitle: 'Stock Portfolio API Docs',
     customCssUrl:
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
   });
 
-  await app.listen(3000);
+  await app.listen(8000);
   console.log(`Application is running on: ${await app.getUrl()}`);
   console.log(
     `Swagger documentation is available at: ${await app.getUrl()}/api/swagger/docs`,

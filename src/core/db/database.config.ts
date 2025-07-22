@@ -13,7 +13,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         uri: configService.get<string>('MongoDB_URI'),
-        dbName: 'portfolio',
+        dbName: 'stock_portfolio',
       }),
       inject: [ConfigService],
     }),
